@@ -1,0 +1,7 @@
+{
+  "name": "IOTNANO",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
