@@ -3,6 +3,12 @@
     <ion-title>
       Tab 1
     </ion-title>
+    <ion-buttons slot="primary">
+    <ion-button *ngIf="isConnected" color="danger" (click)="sendData(1)">
+      
+      <ion-icon slot="end" name="create"></ion-icon>
+    </ion-button>
+  </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -13,5 +19,27 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <div class="ion-content">
+    <div>
+      <ion-title>
+        {{Datosrecivido}}
+      </ion-title>
+
+    </div>
+    <ion-list>
+    <div *ngFor="let data of devices">
+      <ion-item >
+    <ion-title>  {{data.name || udnme}}</ion-title>
+    <br>
+   
+    <br>
+    
+    <p> {{data.address}}</p>
+    <ion-button (click)="connect(data.address)"> conectar </ion-button>
+    
+  </ion-item>
+    </div>
+  </ion-list>
+
+  </div>
 </ion-content>

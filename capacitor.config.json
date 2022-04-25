@@ -2,5 +2,6 @@
 	"appId": "io.ionic.starter",
 	"appName": "IOTNANO",
 	"webDir": "www",
-	"bundledWebRuntime": false
+	"bundledWebRuntime": false,
+	
 }
