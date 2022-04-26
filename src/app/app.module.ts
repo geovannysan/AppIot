@@ -6,13 +6,16 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-//import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
-import { BluetoothSerial } from '@awesome-cordova-plugins/bluetooth-serial/ngx'
+import { BluetoothSerial } from '@awesome-cordova-plugins/bluetooth-serial/ngx';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
+const config: SocketIoConfig = { url: 'http://localhost:1313', options: {} };
+
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [BrowserModule,SocketIoModule.forRoot(config), IonicModule.forRoot(), AppRoutingModule],
   providers: [BluetoothSerial,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
