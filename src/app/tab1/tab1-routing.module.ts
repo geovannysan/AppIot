@@ -4,7 +4,7 @@ import { Tab1Page } from './tab1.page';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: Tab1Page,
   }
 ];
