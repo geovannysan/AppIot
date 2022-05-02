@@ -6,15 +6,25 @@ import { Socket } from 'ngx-socket-io';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
- message = '';
+  message = '';
   messages = [];
   currentUser = '';
-  constructor(private socket:Socket) { }
+  uidsocket = '';
+  constructor(private socket: Socket) { }
 
   ngOnInit() {
-  	this.socket.connect()
+    this.socket.connect();
+    console.log()
+    let name = `user-${new Date().getTime()}`;
+    this.currentUser = name;
+
+    this.socket.emit('set-name', name);
+    this.socket.on('esrconectado', (users) => {
+      this.uidsocket = users;
+      console.log(users)
+    })
   }
-    ionViewWillLeave() {
+  ionViewWillLeave() {
     this.socket.disconnect();
   }
 
