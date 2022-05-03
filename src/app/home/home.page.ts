@@ -14,14 +14,17 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.socket.connect();
-    console.log()
+
     let name = `user-${new Date().getTime()}`;
     this.currentUser = name;
 
     this.socket.emit('set-name', name);
-    this.socket.on('esrconectado', (users) => {
+    this.socket.on('esrconectado', (users: any) => {
       this.uidsocket = users;
       console.log(users)
+    })
+    this.socket.on('actuaGPS', (dta: any) => {
+      console.log(dta)
     })
   }
   ionViewWillLeave() {
